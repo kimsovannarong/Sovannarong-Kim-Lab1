@@ -45,8 +45,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
       
+    - name: Install Vercel CLI
+      run: npm install -g vercel
+      
     - name: Deploy to Vercel
-      uses: amondnet/vercel-action@v25
-      with:
-        vercel-token: ${{ secrets.VERCEL_TOKEN }}
-        vercel-args: '--prod --yes'
+      run: vercel --prod --token ${{ secrets.VERCEL_TOKEN }} --yes
